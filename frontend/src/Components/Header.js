@@ -1,8 +1,22 @@
 import React from 'react'
 import {Link} from "react-router-dom"
+import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
+
+import { LinkContainer } from 'react-router-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../actions/userActions'
+
 
 function Header() {
 
+  const dispatch = useDispatch()
+
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
+
+  const logoutHandler = () => {
+    dispatch(logout())
+  }
 function menu_hidden_left_show(){
   var menu = document.querySelector('.top-title-mobile .wrap .menu-bar .menu-hidden-left')
   var background_black = document.querySelector('.top-title-mobile .wrap .menu-bar .background-black')
@@ -131,17 +145,24 @@ var cart_mobile = document.getElementById('a14235');
                   </form>
                 </div>
                 <div className="right col-3 d-none d-lg-block">
-                  <div className="wrap" onClick={register}>
+                
                     <i className="far fa-user"></i>
-                    <div className="block">
-                      <p>My Account <i className="fa fa-angle-down" aria-hidden="true"></i></p>
-                      <p>Register & Login</p>
-                    </div>
-                  </div>
-                    <ul className="register hidden login674">
-                      <Link to='/login'><li>SingIn</li></Link>
-                      <Link to='/register'><li>Register</li></Link>
-                    </ul>
+                   {userInfo ? (
+                <NavDropdown title={userInfo.name} id='username'>
+                  <LinkContainer to='/profile'>
+                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                  </LinkContainer>
+                  <NavDropdown.Item onClick={logoutHandler}>
+                    Logout
+                  </NavDropdown.Item>
+                </NavDropdown>
+              ) : (
+                <LinkContainer to='/login'>
+                  <Nav.Link>
+                    <i className='fas fa-user'></i> Sign In
+                  </Nav.Link>
+                </LinkContainer>
+              )}
                 </div>
               </div>
             </div>

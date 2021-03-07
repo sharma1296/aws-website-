@@ -26,12 +26,7 @@ const Product = ({product}) => {
             <span className="save_price">Save ₹ {product.savePrice}</span>
                  </div>
         
-               <div className="cart_btn">
-            <button type="button" title="ADD TO CART" className="toCart addtocartbtn">
-                <span className="txt_btn">Add to Cart</span>
-            
-            </button>
-        </div>
+              
          
     </div>
 </div>

@@ -8,7 +8,7 @@ import Loader from '../Components/Loader'
 import { listProductDetails } from '../actions/productActions'
 
 const ProductScreen = ({ history, match }) => {
-  const [qty, setQty] = useState(0)
+  const [qty, setQty] = useState(1)
 
 
   
