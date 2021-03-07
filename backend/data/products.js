@@ -1,7 +1,7 @@
 const products = [
     
     {
-    _id: '1',
+   
     name: 'Airpods 11 Wireless Bluetooth Headphones',
     image: '/Images/top7.png',
     description:
@@ -17,7 +17,6 @@ const products = [
     numReviews: 4,
   },
   {
-    _id: '2',
     name: 'iPhone 11 Pro 256GB Memory heeadphones',
     image: '/Images/top7.png',
     description:
@@ -33,7 +32,7 @@ const products = [
     numReviews: 4,
   },
   {
-    _id: '3',
+  
     name: 'iPhone 11 Pro 256GB Memory',
     image: '/Images/top7.png',
     description:
@@ -50,7 +49,7 @@ const products = [
   },
 
   {
-    _id: '4',
+
     name: 'iPhone 11 Pro 256GB Memory',
     image: '/Images/top7.png',
     description:
