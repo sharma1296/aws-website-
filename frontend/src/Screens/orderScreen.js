@@ -1,18 +1,26 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
+import { Row, Col, ListGroup, Image, Card, Button ,Container } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
-import { getOrderDetails } from '../actions/orderActions'
+import { getOrderDetails,deliverOrder,payOrder } from '../actions/orderActions'
 
-const OrderScreen = ({ match }) => {
+
+
+
+const OrderScreen = ({ match ,history}) => {
   const orderId = match.params.id
 
   const dispatch = useDispatch()
 
   const orderDetails = useSelector((state) => state.orderDetails)
   const { order, loading, error } = orderDetails
+
+const orderPay=useSelector((state)=>state.orderPay)
+const {loading:loadingPay}= orderPay
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
 
   if (!loading) {
     //   Calculate prices
@@ -24,10 +32,21 @@ const OrderScreen = ({ match }) => {
       order.orderItems.reduce((acc, item) => acc + item.price * item.qty, 0)
     )
   }
+ 
+  const deliverHandler = () => {
+    dispatch(deliverOrder(order))
+  }
 
+  const paidHandler =(paymentResult)=>{
+dispatch(payOrder(orderId,paymentResult))
+  }
+  useEffect(() => {
+    if (!userInfo) {
+      history.push('/login')
+    }  })
   useEffect(() => {
     dispatch(getOrderDetails(orderId))
-}, [dispatch, orderId])
+  }, [dispatch,orderId])
 
   return loading ? (
     <Loader />
@@ -35,10 +54,9 @@ const OrderScreen = ({ match }) => {
     <Message variant='danger'>{error}</Message>
   ) : (
     <>
-   <div className='container order-id py-3'>
-       <div className='row'>
+    <Container>
+      <div className='order-id'>
       <h1>Order {order._id}</h1>
-      </div>
       </div>
       <Row>
         <Col md={8}>
@@ -143,10 +161,44 @@ const OrderScreen = ({ match }) => {
                   <Col>${order.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
+              {loadingPay && <Loader/>}
+              {userInfo &&
+                userInfo.isAdmin &&
+              
+             (
+                  <ListGroup.Item>
+                    <Button
+                      type='button'
+                      className='btn btn-block'
+                      onClick={paidHandler}
+                    >
+                      Mark As Paid
+                    </Button>
+                  </ListGroup.Item>
+                )}
+            
+              {userInfo &&
+                userInfo.isAdmin &&
+              
+                !order.isDelivered && (
+                  <ListGroup.Item>
+                    <Button
+                      type='button'
+                      className='btn btn-block'
+                      onClick={deliverHandler}
+                    >
+                      Mark As Delivered
+                    </Button>
+                  </ListGroup.Item>
+                )}
+          
             </ListGroup>
+
+          
           </Card>
         </Col>
       </Row>
+      </Container>
     </>
   )
 }
