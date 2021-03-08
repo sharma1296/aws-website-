@@ -11,6 +11,7 @@ h3 {
 }
 *{
   font-family: 'Poppins', sans-serif;
+
  
 }
 /* Track */
@@ -1641,3 +1642,7 @@ h3 {
   }
 }
  /* end of responsivness */
+
+ .order-id{
+   overflow:hidden
+ }

@@ -38,26 +38,17 @@ function menu_hidden_left_zoom_out(){
   categories.classList.toggle('zoom-out');
 }
 
-/*function settings_zoom_out(){
-  var setting = document.querySelector('.menu-hidden-left .wrap-setting .father-setting');
-  setting.classList.toggle('zoom-out');
-}*/
+
 function drop_list_categories(){
   var list_categories = document.querySelector('.wrap-list-categories');
-  list_categories.classList.toggle('hidden');
+  list_categories.classList.toggle('show');
 }
 // end effect for menu list categories
-
-
-// effect show cart-mobile
 var cart_mobile = document.getElementById('a14235');
   function show_cart_mobile(){
     cart_mobile.classList.toggle('hidden');
   }
-  function register(){
-    var register =  document.querySelector('.login674');
-    register.classList.toggle('hidden');
-  }
+
 
   return (
     <>
@@ -163,6 +154,19 @@ var cart_mobile = document.getElementById('a14235');
                   </Nav.Link>
                 </LinkContainer>
               )}
+              {userInfo && userInfo.isAdmin && (
+                <NavDropdown title='Admin' id='adminmenu'>
+                  <LinkContainer to='/admin/userlist'>
+                    <NavDropdown.Item>Users</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='admin/productlist'>
+                    <NavDropdown.Item>Products</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='admin/orderlist'>
+                    <NavDropdown.Item>Orders</NavDropdown.Item>
+                  </LinkContainer>
+                </NavDropdown>
+              )}
                 </div>
               </div>
             </div>
@@ -170,7 +174,7 @@ var cart_mobile = document.getElementById('a14235');
           <div className="bottom-option d-none d-lg-block container-fluid">
             <div className="wrap-categories container">
                 <div className="categories" onClick={drop_list_categories}><i className="fa fa-bars" id="top-categories" aria-hidden="true"></i>TOP CATEGORIES
-                  <div className="wrap-list-categories">
+                  <div className="wrap-list-categories hidden">
                     <ul className="list-categories">
                       <a href="end"><li>Home</li></a>
                       <a href="end" className="Frozen-item"><li>Frozen  Item <i className="fas fa-chevron-right"></i></li></a>
@@ -212,6 +216,6 @@ var cart_mobile = document.getElementById('a14235');
       </header>
     </>
   )
-}
+              }
 
 export default Header
