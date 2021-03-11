@@ -1,10 +1,11 @@
 import React from 'react'
 import {Link} from "react-router-dom"
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
-
+import {Route } from "react-router-dom"
 import { LinkContainer } from 'react-router-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../actions/userActions'
+import SearchBox from './SearchBox'
 
 
 function Header() {
@@ -129,12 +130,7 @@ var cart_mobile = document.getElementById('a14235');
             <div className="container">
               <div className="row">
                 <div className="left col-3 d-none d-lg-block"><a href="/"><img src="../Images/review.png" alt=""/></a></div>
-                <div className="between col-lg-6 col-ld-12">
-                  <form action="" method="POST">
-                    <input type="text" placeholder="Search our catalog"/>
-                    <button><i className="fa fa-search" aria-hidden="true"></i></button>
-                  </form>
-                </div>
+                <Route render={({ history }) => <SearchBox history={history} />} />
                 <div className="right col-3 d-none d-lg-block">
                 
                     <i className="far fa-user"></i>

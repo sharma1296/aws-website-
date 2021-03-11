@@ -1,9 +1,13 @@
 import React from 'react'
-
+import {Link } from "react-router-dom"
 
 function Footer() {
 
+function  drop_footer_categories(){
+  var wrap_footer = document.querySelector('wrap-footer-categories')
+  wrap_footer.classList.toggle('show')
 
+}
   return (
     <>
         <footer>
@@ -101,21 +105,23 @@ function Footer() {
               </div>
               <div className="col-lg-2  col-6 list-infor view-list">
                 <div className="wrap-content">
-                  <h3 className="title">MY ACCOUNT <i className="d-block d-lg-none fas fa-angle-right"></i></h3>
-                  <ul>
-                    <li><a href="end"><i className="fas fa-chevron-right"></i> Personal info</a></li>
-                    <li><a href="end"><i className="fas fa-chevron-right"></i> Orders</a></li>
-                    <li><a href="end"><i className="fas fa-chevron-right"></i> Addresses</a></li>
-                    <li><a href="end"><i className="fas fa-chevron-right"></i> My wishlist</a></li>
+                  <h3 className="title" onClick={drop_footer_categories}>MY ACCOUNT <i className="d-block d-lg-none fas fa-angle-right"></i></h3>
+                  <div className='wrap-footer-categories hidden'>
+                  <ul className='wrap-footer'>
+                    <li><Link to='/profile'><i className="fas fa-chevron-right"></i> Personal info</Link></li>
+                    <li><Link to='/profile'><i className="fas fa-chevron-right"></i> Orders</Link></li>
+                    <li><Link to='/shipping'><i className="fas fa-chevron-right"></i> Addresses</Link></li>
+              
                   </ul>
+                  </div>
                 </div>
               </div>
               <div className="col-lg-2 col-6 list-infor view-list">
                 <div className="wrap-content">
                   <h3 className="title">PRODUCTS <i className="d-block d-lg-none fas fa-angle-right"></i></h3>
-                  <ul>
+                  <ul className='wrap-footer'>
                     <li><a href="end"><i className="fas fa-chevron-right"></i> About us</a></li>
-                    <li><a href="end"><i className="fas fa-chevron-right"></i> Prices drop</a></li>
+                  
                     <li><a href="end"><i className="fas fa-chevron-right"></i> New products</a></li>
                     <li><a href="end"><i className="fas fa-chevron-right"></i> Best sales</a></li>
               
@@ -125,22 +131,26 @@ function Footer() {
               <div className="col-lg-2 col-6 list-infor view-list">
                 <div className="wrap-content">
                   <h3 className="title">OUR COMPANY <i className="d-block d-lg-none fas fa-angle-right"></i></h3>
-                  <ul>
+                  <div className='wrap-footer-categories'>
+                  <ul className='wrap-footer'>
                     <li><a href="end"><i className="fas fa-chevron-right"></i> Delivery</a></li>
                     <li><a href="end"><i className="fas fa-chevron-right"></i> Legal Notice</a></li>
                     <li><a href="end"><i className="fas fa-chevron-right"></i> Sitemap</a></li>
-                    <li><a href="end"><i className="fas fa-chevron-right"></i> Blog</a></li>
+                  
                   </ul>
+                </div>
                 </div>
               </div>
               <div className="col-lg-3 col-6  contact-us list-infor view-list">
                 <div className="wrap-content">
                   <h3 className="title">CONTACT US <i className="d-block d-lg-none fas fa-angle-right"></i></h3>
-                  <ul>
+                  <div className='wrap-footer-categories'>
+                  <ul className='wrap-footer'>
                     <li><a href="end"><i className="fas fa-map-marker-alt"></i><p>Calista Wise 7292 Str, Sample State. Sample city</p></a></li>
                     <li><a href='end'><i className="fas fa-mobile-alt"></i>(+33) 1 23 45 67 89</a></li>
                     <li><a href="end"><i className="far fa-envelope"></i>demo@demo.com</a></li>
                   </ul>
+                </div>
                 </div>
               </div>
             </div>
