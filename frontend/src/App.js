@@ -15,6 +15,7 @@ import ProductListScreen from './Screens/ProductListScreen'
 import ProductScreen from './Screens/ProductScreen'
 import ProfileScreen from './Screens/ProfileScreen'
 import RegisterScreen from './Screens/RegisterScreen'
+import SearchScreen from "./Screens/SearchScreen"
 import ShippingScreen from './Screens/ShippingScreen'
 import UserEditScreen from './Screens/UserEditScreen'
 import userListScreen from './Screens/userListScreen'
@@ -38,10 +39,36 @@ function App() {
     <Route path='/cart/:id?' component={cartScreen} /> 
     <Route path='/admin/userlist' component={userListScreen} />
     <Route path='/admin/user/:id/edit' component={UserEditScreen} />
-    <Route path='/admin/productlist' component={ProductListScreen} />
+    <Route
+            path='/admin/productlist'
+            component={ProductListScreen}
+            exact
+          />
+          <Route
+            path='/admin/productlist/:pageNumber'
+            component={ProductListScreen}
+            exact
+          />
     <Route path='/admin/product/:id/edit' component={ProductEditScreen} />
     <Route path='/admin/orderlist' component={OrderListScreen} />
-    <Route path='/search/:keyword' component={HomeScreen} />
+    <Route path='/search/:keyword' component={HomeScreen} exact />
+   
+          <Route path='/page/:pageNumber' component={HomeScreen} exact />
+          <Route
+            path='/search/:keyword/page/:pageNumber'
+            component={HomeScreen}
+            exact
+          />
+           <Route
+            path="/search/category/:category"
+            component={SearchScreen}
+            exact
+          ></Route>
+          <Route
+            path="/search/category/:category/name/:name"
+            component={SearchScreen}
+            exact
+          ></Route>
     <Route path='/' component={HomeScreen} exact />
     </Container>
   </main>
