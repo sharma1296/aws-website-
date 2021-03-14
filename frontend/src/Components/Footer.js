@@ -23,7 +23,7 @@ function Footer() {
                         </div>
                         <div className='col-lg-4 col-sm-6'>
                         <div className='feature-box'>
-                        <i className="fas fa-shopping-basket"></i>
+                        <i className="fas fa-tags"></i>
                             <h6>Free & Next Day Delivery</h6>
                             <p>lorem iploc dolc smit 20...</p>
                             </div>
