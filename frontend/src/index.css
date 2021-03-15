@@ -235,8 +235,8 @@ footer ul li a {
   line-height: 15px;
   text-decoration: line-through;
 }
-.owl-item{
-  width:222px;
+.product-wrapper{
+  width:222px
 }
 
 
@@ -295,4 +295,11 @@ footer ul li a {
     font-size:0;
     padding:21px 15px;
   }
+}
+
+.product-detail-right .feature-box .fas{
+  background:#e96125 none repeat scroll  0 0 ;
+  border:medium none;
+  color:#fff;
+
 }

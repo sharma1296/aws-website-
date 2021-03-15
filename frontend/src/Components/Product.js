@@ -4,8 +4,8 @@ export default function Product(props) {
     const {product} =props
     return (
         <>
-        <div className='owl-item'>
-         <div className='item'>
+   
+         <div className='product-wrapper'>
              <div className='product'>
                  <a href={`/product/${product._id}`}>
                      <div className='product-header'>
@@ -27,7 +27,7 @@ export default function Product(props) {
                  </a>
              </div>
          </div>
-         </div>
+    
         </>
     )
 }
