@@ -1,0 +1,24 @@
+{
+  "name": "myfreshcart",
+  "version": "1.0.0",
+  "description": "welcome to myfreshcart ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sharma1296/aws-website-.git"
+  },
+  "keywords": [
+    "grocery",
+    "delivery",
+    "online-shopping"
+  ],
+  "author": "sharma1296",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sharma1296/aws-website-/issues"
+  },
+  "homepage": "https://github.com/sharma1296/aws-website-#readme"
+}

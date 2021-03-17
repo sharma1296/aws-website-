@@ -19,7 +19,7 @@ function Header() {
 
             <nav className="navbar navbar-light navbar-expand-lg bg-dark bg-faded osahan-menu">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="index.html"> <img src="../Images/logo.png" alt="logo" /> </a>
+                    <a className="navbar-brand" href="/"> <img src="../Images/logo.png" alt="logo" /> </a>
                 
 
 
@@ -29,7 +29,7 @@ function Header() {
                                 <div className="input-group">
                                      <input className="form-control" placeholder="Search products in Your City" aria-label="Search products in Your City" type="text"/>
                                         <span className="input-group-btn">
-                                <button className="btn btn-secondary" type="button"><i className="mdi mdi-file-find"></i> Search</button>
+                                <button className="btn btn-success" type="button"><i className="mdi mdi-file-find"></i> Search</button>
                                         </span>
 </div>
                                 </div>

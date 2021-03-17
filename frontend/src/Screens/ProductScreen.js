@@ -19,7 +19,7 @@ function ProductScreen(props) {
                                     <div className='favourite-icon'>
                                         <a href="#"><i className='fas fa-tag'></i></a>
                                     </div>
-                                    <div className=''>
+                                    <div className='img-container'>
                                         <img src={product.image} className='img-fluid'></img>
                                     </div>
                                     <div></div>
@@ -35,7 +35,7 @@ function ProductScreen(props) {
                                 <h6><strong><i className='fas fa-check'></i>Available in </strong>500 gm</h6>
                                 <p className='regular-price'><i className='fas fa-tag'></i>M.R.P ${product.regularPrice}</p>
                                 <p className='offer-price mb-0'>Discounted price : <span className='text-success'>${product.offerPrice}</span></p>
-                                <a href='end'><button type='button' className='btn btn-secondary btn-lg'><i className='fas fa-shopping-cart'></i>Add To Cart</button></a>
+                                <a href='end'><button type='button' className='btn btn-success btn-lg'><i className='fas fa-shopping-cart'></i>Add To Cart</button></a>
                                 <div className='short-description'>
                                     <h5>Quick Overview <p className='float-right'>Availability : <span className='badge badge-success'>In Stock</span></p></h5>
                                     <p><b>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b> Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum.
