@@ -20,7 +20,7 @@ export default function Product(props) {
                      
                      </div>
                      <div className='product-footer'>
-                         <button className='btn btn-secondary btn-sm float-right' type='button'>
+                         <button className='btn btn-success btn-sm float-right' type='button'>
                          <i className="fas fa-shopping-cart"></i> Add To Cart
                          </button>
                          <p className='offer-price mb-0'>$ {product.offerPrice} <i className="fas fa-tag"></i><br/>

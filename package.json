@@ -1,10 +1,11 @@
 {
   "name": "myfreshcart",
+  "type": "module",
   "version": "1.0.0",
   "description": "welcome to myfreshcart ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,11 @@
   "bugs": {
     "url": "https://github.com/sharma1296/aws-website-/issues"
   },
-  "homepage": "https://github.com/sharma1296/aws-website-#readme"
+  "homepage": "https://github.com/sharma1296/aws-website-#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
 }
