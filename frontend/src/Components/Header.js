@@ -1,6 +1,9 @@
 import React from 'react'
-
+import {Link} from "react-router-dom"
+import { useSelector } from 'react-redux';
 function Header() {
+    const cart = useSelector((state) => state.cart);
+    const { cartItems } = cart;
     return (
 
         <div className='header'>
@@ -37,10 +40,12 @@ function Header() {
                             <div className="my-2 my-lg-0">
                                 <ul className="list-inline main-nav-right">
                                     <li className="list-inline-item">
-                                        <a href="#" data-target="#bd-example-modal" data-toggle="modal" className="btn btn-link"><i className="fas fa-user"></i> Login/Sign Up</a>
+                                        <Link to='/login'><i className="fas fa-user"></i> Login/Sign Up</Link>
                                     </li>
                                     <li className="list-inline-item cart-btn">
-                                        <a href="#"  className="btn btn-link border-none"><i className="fas fa-shopping-cart"></i> My Cart <small className="cart-value">5</small></a>
+                                    <Link to="/cart"><i className='fas fa-shopping-cart'></i>Cart{cartItems.length > 0 && (<span className="badge">{cartItems.length}</span>
+              )}
+            </Link>
                                     </li>
                                 </ul>
                             </div>

@@ -5,6 +5,7 @@ import Footer from "./Components/Footer"
 
 import HomeScreen from './Screens/HomeScreen'
 import ProductScreen from './Screens/ProductScreen'
+import CartScreen from './Screens/CartScreen'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
   <Router>
  <Header/>
  <main className='py-3'>
+ <Route path="/cart/:id?" component={CartScreen}></Route>
  <Route path="/product/:id" component={ProductScreen}></Route>
           <Route path="/" component={HomeScreen} exact></Route>
  </main>
