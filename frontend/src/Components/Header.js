@@ -1,9 +1,13 @@
-import React from 'react'
+import React ,{useState}from 'react'
 import {Link} from "react-router-dom"
 import { useSelector } from 'react-redux';
 function Header() {
+    const [sidebar, setSidebar] = useState(false);
+
+    const showSidebar = () => setSidebar(!sidebar);
     const cart = useSelector((state) => state.cart);
     const { cartItems } = cart;
+
     return (
 
         <div className='header'>
@@ -43,7 +47,7 @@ function Header() {
                                         <Link to='/login'><i className="fas fa-user"></i> Login/Sign Up</Link>
                                     </li>
                                     <li className="list-inline-item cart-btn">
-                                    <Link to="/cart"><i className='fas fa-shopping-cart'></i>Cart{cartItems.length > 0 && (<span className="badge">{cartItems.length}</span>
+                                    <Link onClick={showSidebar}><i className='fas fa-shopping-cart'></i>Cart{cartItems.length > 0 && (<span className="badge">{cartItems.length}</span>
               )}
             </Link>
                                     </li>
@@ -53,8 +57,57 @@ function Header() {
                     </div>
 </nav>
 
-            
-            
+            {/*cart sidebar*/}
+
+            {/*
+            <div className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+            <div className="cart-sidebar ">
+<div className="cart-sidebar-header">
+<h5>
+My Cart <span className="text-success">(3 item)</span> <a className="float-right" href="#"><i className="fas fa-times"></i>
+</a>
+</h5>
+</div>
+<div className="cart-sidebar-body">
+<div className="cart-list-product">
+<a className="float-right remove-cart" href="#"><i className="mdi mdi-close"></i></a>
+<img className="img-fluid" src="../Images/7.jpg" alt=""/>
+<span className="badge badge-success">50% OFF</span>
+<h5><a href="#">Product Title Here</a></h5>
+<h6><strong><span className="mdi mdi-approval"></span> Available in</strong> - 500 gm</h6>
+<p className="offer-price mb-0">$450.99 <i className="fas fa-tag"></i> <span className="regular-price">$800.99</span></p>
+</div>
+<div className="cart-list-product">
+<a className="float-right remove-cart" href="#"><i className="mdi mdi-close"></i></a>
+<img className="img-fluid" src="../Images/1.jpg" alt=""/>
+<span className="badge badge-success">50% OFF</span>
+<h5><a href="#">Product Title Here</a></h5>
+<h6><strong><span className="mdi mdi-approval"></span> Available in</strong> - 500 gm</h6>
+<p className="offer-price mb-0">$450.99 <i className="fas fa-tag"></i> <span className="regular-price">$800.99</span></p>
+</div>
+<div className="cart-list-product">
+<a className="float-right remove-cart" href="#"><i className="mdi mdi-close"></i></a>
+<img className="img-fluid" src="../Images/7.jpg" alt=""/>
+<span className="badge badge-success">50% OFF</span>
+<h5><a href="#">Product Title Here</a></h5>
+<h6><strong><span className="mdi mdi-approval"></span> Available in</strong> - 500 gm</h6>
+<p className="offer-price mb-0">$450.99 <i className="fas fa-tag"></i> <span className="regular-price">$800.99</span></p>
+</div>
+
+</div>
+<div className="cart-sidebar-footer">
+<div className="cart-store-details">
+<p>Sub Total <strong className="float-right">$900.69</strong></p>
+<p>Delivery Charges <strong className="float-right text-danger">+ $29.69</strong></p>
+<h6>Your total savings <strong className="float-right text-danger">$55 (42.31%)</strong></h6>
+</div>
+<a href="checkout.html"><button className="btn btn-success btn-lg btn-block text-left" type="button"><span className="float-left"><i className="fas fa-shopping-cart"></i> Proceed to Checkout </span><span className="float-right"><strong>$1200.69</strong> <span className="fas fa-chevron-right"></span></span></button></a>
+</div>
+
+
+            </div>
+            </div>
+            */}
         </div>
     )
 }
