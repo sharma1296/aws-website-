@@ -44,7 +44,8 @@ function Header() {
                             <div className="my-2 my-lg-0">
                                 <ul className="list-inline main-nav-right">
                                     <li className="list-inline-item">
-                                        <Link to='/login'><i className="fas fa-user"></i> Login/Sign Up</Link>
+                           <Link to='/signin'><i className='fas fa-user'></i> Login/SignUp</Link>
+
                                     </li>
                                     <li className="list-inline-item cart-btn">
                                     <Link onClick={showSidebar}><i className='fas fa-shopping-cart'></i>Cart{cartItems.length > 0 && (<span className="badge">{cartItems.length}</span>
