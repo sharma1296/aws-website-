@@ -1,6 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {Link} from "react-router-dom"
+import { signin } from '../actions/userActions';
+import LoadingBox from '../Components/LoadingBox';
+import Message from '../Components/Message';
 
-function SignInScreen() {
+
+function SignInScreen(props) {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const redirect = props.location.search
+    ? props.location.search.split('=')[1]
+    : '/';
+
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo, loading, error } = userSignin;
+
+  const dispatch = useDispatch();
+    const submitHandler = (e) => {
+      e.preventDefault();
+      // TODO: sign in action
+      dispatch(signin(email, password));
+    };
     return (
         <>
 
@@ -10,19 +32,21 @@ function SignInScreen() {
                         <div className="login-modal-left">
                         </div>
                     </div>
-                    <form>
+                    <form onSubmit={submitHandler}>
                         <div className="login-modal-right">
 
                             <div className="tab-content">
                                 <div className="tab-pane active" id="login" role="tabpanel">
                                     <h5 className="heading-design-h5">Login to your account</h5>
+                                    {loading && <LoadingBox></LoadingBox>}
+        {error && <Message variant="danger">{error}</Message>}
                                     <fieldset className="form-group">
                                         <label>Enter Email/Mobile number</label>
-                                        <input type="text" className="form-control" placeholder="" />
+                                        <input type="text" className="form-control" id="email" placeholder="" required   onChange={(e) => setEmail(e.target.value)}/>
                                     </fieldset>
                                     <fieldset className="form-group">
                                         <label>Enter Password</label>
-                                        <input type="password" className="form-control" placeholder="Enter Your Passsword" />
+                                        <input type="password" className="form-control" required placeholder="Enter Your Passsword"    onChange={(e) => setPassword(e.target.value)}/>
                                     </fieldset>
                                     <fieldset className="form-group">
                                         <button type="submit" className="btn btn-lg btn-success btn-block">Enter to your account</button>
@@ -44,11 +68,12 @@ function SignInScreen() {
                             <div className="clearfix"></div>
                             <div className="text-center login-footer-tab">
                                 <ul className="nav nav-tabs" role="tablist">
+                                  
                                     <li className="nav-item">
-                                        <a className="nav-link active" data-toggle="tab" href="#login" role="tab"><i className="mdi mdi-lock"></i> LOGIN</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" data-toggle="tab" href="#register" role="tab"><i className="mdi mdi-pencil"></i> REGISTER</a>
+                                    New customer?{' '}
+            <Link to={`/register?redirect=${redirect}`}>
+              Create your account
+            </Link>
                                     </li>
                                 </ul>
                             </div>

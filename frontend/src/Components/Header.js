@@ -1,12 +1,21 @@
 import React ,{useState}from 'react'
 import {Link} from "react-router-dom"
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { signout } from "../actions/userActions"
+
+
 function Header() {
     const [sidebar, setSidebar] = useState(false);
 
     const showSidebar = () => setSidebar(!sidebar);
     const cart = useSelector((state) => state.cart);
     const { cartItems } = cart;
+    const userSignin = useSelector((state) => state.userSignin);
+    const { userInfo } = userSignin;
+    const dispatch = useDispatch();
+    const signoutHandler = () => {
+      dispatch(signout());
+    };
 
     return (
 
@@ -44,7 +53,22 @@ function Header() {
                             <div className="my-2 my-lg-0">
                                 <ul className="list-inline main-nav-right">
                                     <li className="list-inline-item">
-                           <Link to='/signin'><i className='fas fa-user'></i> Login/SignUp</Link>
+                                    {userInfo ? (
+              <div className="dropdown">
+                <Link to="#">
+                  {userInfo.name} <i className="fa fa-caret-down"></i>{' '}
+                </Link>
+                <ul className="dropdown-content">
+                  <li>
+                    <Link to="#signout" onClick={signoutHandler}>
+                      Sign Out
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <Link to="/signin">Sign In</Link>
+            )}
 
                                     </li>
                                     <li className="list-inline-item cart-btn">
