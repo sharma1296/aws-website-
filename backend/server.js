@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv'
 import userRouter from './router/userRouter.js';
 import productRouter from './router/productRouter.js';
+import orderRouter from './router/orderRouter.js';
 
 
 
@@ -21,6 +22,7 @@ mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost/myfreshcart', {
 
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
+app.use('/api/orders', orderRouter);
 
 
 app.use((err, req, res, next) => {

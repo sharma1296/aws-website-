@@ -24,14 +24,15 @@ export default function CartScreen(props) {
     };
   
     const checkoutHandler = () => {
-      props.history.push('/signin?redirect=shipping');
-    };
+      props.history.push('/signin?redirect=shipping')
+    }
+  
   return (
     <>
    <div className='section-padding cart-page'>
-     ]<div className='container'>
+     <div className='container'>
        <div className='row'>
-         <div className='col-md-12'>
+         <div className='col-8'>
      <div className='card mt-2'>
 
      <h5 className ="card-header">My Cart<span class="text-success float-right">(5 item)</span></h5>
@@ -51,27 +52,54 @@ export default function CartScreen(props) {
            <h5><a href="#">{item.name}</a></h5>
            <h6><strong><span className="mdi mdi-approval"></span> Available in</strong> - {item.size}gm</h6>
            <p className="offer-price mb-0">${item.offerPrice} <i className="fas fa-tag"></i> <span className="regular-price">$ {item.regularPrice}</span></p>
-           </div>
+         
+             <select
+             value={item.qty}
+             onChange={(e) =>
+               dispatch(
+                 addToCart(item.product, Number(e.target.value))
+               )
+             }
+           >
+             {[...Array(item.countInStock).keys()].map((x) => (
+               <option key={x + 1} value={x + 1}>
+                 {x + 1}
+               </option>
+             ))}
+           </select>
 
+</div>
 ))}
 
          
          </div>
         )}
-         <div className='card-footer cart-sidebar-footer'>
-
-         <div className="card-footer cart-sidebar-footer">
-<div className="cart-store-details">
-<p>Sub Total <strong class="float-right">$900.69</strong></p>
-<p>Delivery Charges <strong className="float-right text-danger">+ $29.69</strong></p>
-<h6>Your total savings <strong className="float-right text-danger">$55 (42.31%)</strong></h6>
-</div>
-<a href="checkout.html"><button className="btn btn-secondary btn-lg btn-block text-left"     onClick={checkoutHandler}  disabled={cartItems.length === 0} type="button"><span className="float-left"><i class="mdi mdi-cart-outline"></i> Proceed to Checkout </span><span class="float-right"><strong>$1200.69</strong> <span class="mdi mdi-chevron-right"></span></span></button></a>
-</div>
-         </div>
-       </div>
+        </div>
+        </div>
+      <div className="col-4">
+        <div className="card card-body">
+          <ul>
+            <li>
+              <h2>
+                Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items) : $
+                {cartItems.reduce((a, c) => a + c.offerPrice * c.qty, 0)}
+              </h2>
+            </li>
+            <li>
+              <button
+                type="button"
+                onClick={checkoutHandler}
+                className="primary block"
+                disabled={cartItems.length === 0}
+              >
+                Proceed to Checkout
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
      </div>
-         </div> 
        </div>
      </div>
  
