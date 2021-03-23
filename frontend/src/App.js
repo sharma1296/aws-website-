@@ -17,6 +17,10 @@ import ProfileScreen from './Screens/ProfileScreen'
 import PrivateRoute from './Components/PrivateRoute'
 import ProductListScreen from './Screens/ProductListScreen'
 import ProductEditScreen from './Screens/ProductEditScreen';
+import OrderListScreen from './Screens/OrderListScreen';
+import { Container } from 'react-bootstrap';
+import UserListScreen from './Screens/UserListScreen';
+import UserEditScreen from './Screens/UserEditScreen';
 
 function App() {
   return (
@@ -24,6 +28,7 @@ function App() {
   <Router>
  <Header/>
  <main className='py-3'>
+   <Container>
  <Route path="/cart/:id?" component={CartScreen}></Route>
  <Route path="/signin" component={SignInScreen}></Route>
  <Route path="/register" component={RegisterScreen}></Route>
@@ -46,7 +51,17 @@ function App() {
             path="/productlist"
             component={ProductListScreen}
           ></AdminRoute>
+             <AdminRoute
+            path="/orderlist"
+            component={OrderListScreen}
+          ></AdminRoute>
+            <AdminRoute
+            path="/user/:id/edit"
+            component={UserEditScreen}
+          ></AdminRoute>
+           <AdminRoute path="/userlist" component={UserListScreen}></AdminRoute>
           <Route path="/" component={HomeScreen} exact></Route>
+          </Container>
  </main>
  <Footer/>
 </Router>

@@ -4,7 +4,11 @@ import { Button, Row, Col, ListGroup, Image, Card,Container } from 'react-bootst
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../Components/Message'
 import LoadingBox from '../Components/LoadingBox'
-import { detailsOrder, payOrder } from '../actions/orderActions';
+import { detailsOrder, payOrder,deliverOrder } from '../actions/orderActions';
+import {
+  ORDER_DELIVER_RESET,
+  ORDER_PAY_RESET,
+} from '../constants/orderConstants';
 
 const OrderScreen = ({ match,history }) => {
   const orderId = match.params.id
@@ -19,6 +23,8 @@ const {loading:loadingPay}= orderPay
 const userSignin = useSelector((state) => state.userSignin);
 const { userInfo } = userSignin;
 
+const orderDeliver = useSelector((state) => state.orderDeliver);
+
   if (!loading) {
     //   Calculate prices
     const addDecimals = (num) => {
@@ -29,6 +35,10 @@ const { userInfo } = userSignin;
       order.orderItems.reduce((acc, item) => acc + item.offerPrice * item.qty, 0)
     )
   }
+  const deliverHandler = () => {
+    dispatch(deliverOrder(order))
+  }
+
   const paidHandler =(paymentResult)=>{
     dispatch(payOrder(orderId,paymentResult))
    }
@@ -169,7 +179,21 @@ const { userInfo } = userSignin;
                         </Button>
                       </ListGroup.Item>
                     )}
-                
+                   {userInfo &&
+                userInfo.isAdmin &&
+              
+                !order.isDelivered && (
+                  <ListGroup.Item>
+                    <Button
+                      type='button'
+                      className='btn btn-block'
+                      onClick={deliverHandler}
+                    >
+                      Mark As Delivered
+                    </Button>
+                  </ListGroup.Item>
+                )}
+          
                   
                    
                 </ListGroup>
