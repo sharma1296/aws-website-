@@ -45,7 +45,7 @@ function ProductScreen(props) {
                         {/* product details */}
                         <div className='col-md-6'>
                             <div className='product-detail-right'>
-                                <span className='badge badge-success'>50% Off</span>
+                                <span className='badge badge-success'>{product.discountPercentage}% Off</span>
                                 <h2>{product.name}</h2>
                                 <h6><strong><i className='fas fa-check'></i>Available in </strong>500 gm</h6>
                                 <p className='regular-price'><i className='fas fa-tag'></i>M.R.P ${product.regularPrice}</p>

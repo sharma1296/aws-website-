@@ -2,7 +2,7 @@ import React from 'react'
 import {BrowserRouter as Router,Route} from "react-router-dom"
 import Header from './Components/Header'
 import Footer from "./Components/Footer"
-
+import AdminRoute from './Components/AdminRoute';
 import HomeScreen from './Screens/HomeScreen'
 import ProductScreen from './Screens/ProductScreen'
 import CartScreen from './Screens/CartScreen'
@@ -15,6 +15,8 @@ import OrderScreen from './Screens/OrderScreen'
 import OrderHistoryScreen from './Screens/OrderHistoryScreen'
 import ProfileScreen from './Screens/ProfileScreen'
 import PrivateRoute from './Components/PrivateRoute'
+import ProductListScreen from './Screens/ProductListScreen'
+import ProductEditScreen from './Screens/ProductEditScreen';
 
 function App() {
   return (
@@ -28,13 +30,22 @@ function App() {
  <Route path="/shipping" component={ShippingScreen}></Route>
  <Route path="/payment" component={PaymentScreen}></Route>
  <Route path="/placeorder" component={PlaceOrderScreen}></Route>
- <Route path="/product/:id" component={ProductScreen}></Route>
+ <Route
+            path="/product/:id/edit"
+            component={ProductEditScreen}
+            exact
+          ></Route>
+ <Route path="/product/:id" component={ProductScreen} exact></Route>
  <Route path="/order/:id" component={OrderScreen}></Route>
  <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
  <PrivateRoute
             path="/profile"
             component={ProfileScreen}
           ></PrivateRoute>
+   <AdminRoute
+            path="/productlist"
+            component={ProductListScreen}
+          ></AdminRoute>
           <Route path="/" component={HomeScreen} exact></Route>
  </main>
  <Footer/>
