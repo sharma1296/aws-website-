@@ -21,6 +21,7 @@ import OrderListScreen from './Screens/OrderListScreen';
 import { Container } from 'react-bootstrap';
 import UserListScreen from './Screens/UserListScreen';
 import UserEditScreen from './Screens/UserEditScreen';
+import SearchScreen from './Screens/SearchScreen';
 
 function App() {
   return (
@@ -42,7 +43,15 @@ function App() {
           ></Route>
  <Route path="/product/:id" component={ProductScreen} exact></Route>
  <Route path="/order/:id" component={OrderScreen}></Route>
+
  <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
+ <Route path='/search/:keyword' component={HomeScreen} exact />
+          <Route path='/page/:pageNumber' component={HomeScreen} exact />
+          <Route
+            path='/search/:keyword/page/:pageNumber'
+            component={HomeScreen}
+            exact
+          />
  <PrivateRoute
             path="/profile"
             component={ProfileScreen}
@@ -50,7 +59,7 @@ function App() {
    <AdminRoute
             path="/productlist"
             component={ProductListScreen}
-          ></AdminRoute>
+         exact ></AdminRoute>
              <AdminRoute
             path="/orderlist"
             component={OrderListScreen}
@@ -58,6 +67,11 @@ function App() {
             <AdminRoute
             path="/user/:id/edit"
             component={UserEditScreen}
+          ></AdminRoute>
+               <AdminRoute
+            path="/productlist/pageNumber/:pageNumber"
+            component={ProductListScreen}
+            exact
           ></AdminRoute>
            <AdminRoute path="/userlist" component={UserListScreen}></AdminRoute>
           <Route path="/" component={HomeScreen} exact></Route>

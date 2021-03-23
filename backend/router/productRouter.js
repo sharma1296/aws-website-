@@ -9,11 +9,33 @@ const productRouter = express.Router();
 productRouter.get(
   '/',
   expressAsyncHandler(async (req, res) => {
-    const products = await Product.find({});
-    res.send(products);
+    const pageSize = 10
+    const page = Number(req.query.pageNumber) || 1
+  
+    const keyword = req.query.keyword
+    ? {
+        name: {
+          $regex: req.query.keyword,
+          $options: 'i',
+        },
+      }
+    : {}
+    const count = await Product.countDocuments({ ...keyword })
+  const products = await Product.find({ ...keyword })
+  .limit(pageSize)
+  .skip(pageSize * (page - 1))
+  res.json({ products, page, pages: Math.ceil(count / pageSize) })
   })
 );
 
+
+productRouter.get(
+  '/categories',
+  expressAsyncHandler(async (req, res) => {
+    const categories = await Product.find().distinct('category');
+    res.send(categories);
+  })
+);
 productRouter.get(
   '/seed',
   expressAsyncHandler(async (req, res) => {

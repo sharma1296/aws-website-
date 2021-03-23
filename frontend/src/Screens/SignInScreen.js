@@ -23,6 +23,11 @@ function SignInScreen(props) {
       // TODO: sign in action
       dispatch(signin(email, password));
     };
+    useEffect(() => {
+        if (userInfo) {
+          props.history.push(redirect);
+        }
+      }, [props.history, redirect, userInfo]);
     return (
         <>
 
